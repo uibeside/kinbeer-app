@@ -25,23 +25,48 @@ class _SplashPageState extends State<SplashPage>{
       );
     });
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Color(0xFF2F80ED), Color(0xFF4D55F0)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight
-          )
-        ),
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/kinbeer_logo.png", height: 106)
-          ],
-        ),
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Color(0xFF2F80ED), Color(0xFF4D55F0)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                )
+              ),
+          ),
+          Container(
+            child: Image.asset("assets/images/bg.png") ,
+          ),
+          Center(
+            child: Image.asset("assets/images/kinbeer_logo.png", height: 106)
+          ),
+        ],
       ),
+
+
+
+
+      // body: Container(
+      //   width: double.infinity,
+      //   decoration: const BoxDecoration(
+      //     gradient: LinearGradient(
+      //         colors: [Color(0xFF2F80ED), Color(0xFF4D55F0)],
+      //         begin: Alignment.topLeft,
+      //         end: Alignment.bottomRight
+      //     )
+      //   ),
+      //
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Image.asset("assets/images/kinbeer_logo.png", height: 106)
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

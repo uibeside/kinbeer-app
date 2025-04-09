@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kinbeer_app/assets/solar_icons_icons.dart';
+import 'db_helper.dart';
 
 import 'buttom_sheet.dart';
 
@@ -326,3 +327,4 @@ class _RulesPageState extends State<RulesPage> {
 //     );
 //   }
 // }
+

@@ -227,6 +227,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:kinbeer_app/assets/solar_icons_icons.dart';
+import 'package:kinbeer_app/pages/db_helper.dart';
 
 class CardSelectionBottomSheet extends StatefulWidget {
   final List<String> cardImages;
@@ -295,11 +296,33 @@ class _CardSelectionBottomSheetState extends State<CardSelectionBottomSheet> {
     });
   }
 
-  void _confirmSelection() {
-    widget.onCardsSelected(
-        selectedItems.map((i) => widget.cardImages[i]).toList());
-    Navigator.pop(context);
-  }
+  void _confirmSelection() async {
+  List<String> selectedCardImages =
+      selectedItems.map((i) => widget.cardImages[i]).toList();
+
+  await DatabaseHelper.instance.saveSelectedCards(selectedCardImages);
+  widget.onCardsSelected(selectedCardImages);
+
+  Navigator.pop(context);
+}
+
+
+  @override
+void initState() {
+  super.initState();
+  _loadSelectedCards();
+}
+
+Future<void> _loadSelectedCards() async {
+  List<String> savedCards = await DatabaseHelper.instance.getSelectedCards();
+  setState(() {
+    selectedItems = savedCards
+        .map((image) => widget.cardImages.indexOf(image))
+        .where((index) => index != -1)
+        .toSet();
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {

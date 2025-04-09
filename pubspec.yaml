@@ -33,6 +33,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_iconify: ^0.0.7
   rflutter_alert: ^2.0.7
+  sqflite: ^2.3.0
+  path_provider: ^2.1.2
 
 flutter_launcher_icons:
   android: "launcher_icon"
